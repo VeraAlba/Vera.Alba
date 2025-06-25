@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Alba - Panaderia de Masa Madre">
+    <title>Vera Alba</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Estilos CSS -->
+    <style>
+        /* Agregar estilos específicos aquí */
+        /* Menú */
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Icono de hamburguesa */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilos para móvil */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+                width: 100%;
+                background-color: #1b1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: auto;
+                justify-content: flex-start;
+                flex-direction: column;
+                padding-top: 50px;
+            }
+
+            .menu li {
+                text-align: center;
+                width: 100%;
+
+            }
+
+            .menu a {
+                padding: 20px;
+                color: white !important;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        .wave-separator {
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            position: relative;
+            margin-top: -1px;
+        }
+
+        .wave-separator svg {
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="img/logo_VA.png" alt="Logo Vera Alba">
+            </div>
+            <!-- Icono de menú hamburguesa para móviles -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="productos.html">Productos <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Panes</a></li>
+                        <li><a href="#">Panificados</a></li>
+                        <li><a href="#">Prepizzas</a></li>
+                        <li><a href="#">Focacceria</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="enterate.html">Enterate <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Venta por mayor</a></li>
+                        <li><a href="#">Congelados</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="contacto-btn">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Vera Alba Obrador</h1>
+            <p>Panaderia Artesanal de Fermentación Natural</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section id="conocenos">
+        <div class="conocenos-content">
+            <img src="img/icons/pasion_mm.png" alt="Icono de pan">
+
+            <p>Tenemos pasión por la masa madre</p>
+            <a href="nosotros.html" class="btn">CONOCENOS</a>
+        </div>
+
+        <!-- <div id="carousel">
+            <div class="carousel-container">
+                <div class="carousel-slide">
+                    <img src="img/molde_integral.png" alt="Molde Integral">
+                    <img src="img/molde_semi_integral.png" alt="Molde Semi Integral">
+                    <img src="img/hogazas.png" alt="Hogazas">
+                </div>
+                <div class="carousel-slide">
+                    <img src="img/molde_integral.png" alt="Molde Integral">
+                    <img src="img/molde_semi_integral.png" alt="Molde Semi Integral">
+                    <img src="img/hogazas.png" alt="Hogazas">
+                </div>
+            </div>
+            <div class="carousel-dots">
+                <button class="dot" onclick="moveToSlide(0)">•</button>
+                <button class="dot" onclick="moveToSlide(1)">•</button>
+            </div>
+        </div>-->
+    </section>
+
+    <!-- Separador decorativo -->
+    <div class="wave-separator">
+        <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+            <path d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z" fill="#fff" />
+        </svg>
+    </div>
+
+    <div id="productos">
+        <div class="productos-container">
+            <img src="img/icons/nuestros_productos.png" alt="Icono de nuestros_productos">
+            <div class="productos-list">
+                <a href="productos.html" class="producto-item">
+                    <img src="img/icons/pan-integral.png" alt="Pan artesanal">
+                    <h3>Pan artesanal<br>de Masa Madre</h3>
+                    <p>Deliciosos panes recién horneados.</p>
+                </a>
+                <a href="productos.html" class="producto-item">
+                    <img src="img/icons/un-pan.png" alt="Facturas">
+                    <h3>Panificación de<br>Masa Madre</h3>
+                    <p>Variedad de facturas frescas.</p>
+                </a>
+                <a href="productos.html" class="producto-item">
+                    <img src="img/icons/pizza.png" alt="Pizza artesanal">
+                    <h3>Prepizzas y Focaccias</h3>
+                    <p>La mejor pizza artesanal de la ciudad.</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Texto de redirección -->
+
+
+
+    <!-- Nueva Sección -->
+    <section id="trabaja-con-nosotros" class="trabaja-con-nosotros">
+        <div class="trabaja-content">
+            <h2>¿Quieres trabajar<br> con nosotros?</h2>
+            <p>Somos fabricantes de<br>panadería artesanal con<br>pasión y dedicación.</p>
+            <a href="enterate.html" class="btn">Entérate</a>
+        </div>
+    </section>
+
+    <a href="https://wa.me/+5493464549463" class="whatsapp-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+    </a>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>vera-alba@gmail.com</p>
+                <p>+54 9 3464 549463</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> "ESTAMOS HORNEANDO"</p>
+        </div>
+    </footer>
+    <script>
+        // Función para toggle el menú en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+    <script src="js/app.js"></script> <!-- Archivo JavaScript -->
+</body>
+
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Alba - Panadería de Masa Madre">
+    <title>Vera Alba</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 5px;
+            background-color: #222;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f3f4f6;
+        }
+
+        /* Contenedor del formulario de contacto */
+        .contact-container {
+            max-width: 900px;
+            margin: 150px auto 50px;
+            padding: 40px;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 20px;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1), -5px -5px 15px rgba(255, 255, 255, 0.7);
+            text-align: center;
+        }
+
+        .contact-container h1 {
+            font-size: 32px;
+            color: #444;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .contact-container p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            position: relative;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: #f3f3f3;
+            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            background: #ffffff;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2), -5px -5px 15px rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            padding: 15px 20px;
+            font-size: 16px;
+            color: #fff;
+            background: linear-gradient(145deg, #ff4d4d, #cc0000);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(145deg, #cc0000, #990000);
+        }
+
+        #status-message {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Menú */
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Icono de hamburguesa */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilos para móvil */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+                width: 100%;
+                background-color: #1b1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: auto;
+                justify-content: flex-start;
+                flex-direction: column;
+                padding-top: 50px;
+            }
+
+            .menu li {
+                text-align: center;
+                width: 100%;
+
+            }
+
+            .menu a {
+                padding: 20px;
+                color: white !important;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="img/logo_VA.png" alt="Logo Vera Alba">
+            </div>
+            <!-- Icono de menú hamburguesa para móviles -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="productos.html">Productos <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Panes</a></li>
+                        <li><a href="#">Panificados</a></li>
+                        <li><a href="#">Prepizzas</a></li>
+                        <li><a href="#">Focacceria</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="enterate.html">Enterate <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Venta por mayor</a></li>
+                        <li><a href="#">Congelados</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="contacto-btn">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <h1>Contáctanos</h1>
+        <p>Envíanos tus dudas o si quieres trabajar con nuestros productos, ponte en contacto con nosotros, te
+            responderemos a la brevedad.</p>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="user_name" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="telephone">Número de telefono</label>
+                <input type="text" id="telephone" name="user_telephone" placeholder="Tu Telefono" required>
+            </div>
+            <div class="form-group">
+                <label for="localidad">Localidad</label>
+                <input type="text" id="localidad" name="user_localidad" placeholder="Tu Localidad" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo Electrónico</label>
+                <input type="email" id="email" name="user_email" placeholder="Tu correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="user_message" placeholder="Escribe tu mensaje aquí" rows="5"
+                    required></textarea>
+            </div>
+            <button type="submit" id="send-button">Enviar</button>
+        </form>
+        <p id="status-message"></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script>
+        (function () {
+            emailjs.init("wGGXbjw0SnUFnyV2T"); // Reemplaza "TU_PUBLIC_KEY" con tu clave pública de EmailJS
+        })();
+
+        const form = document.getElementById("contact-form");
+        const statusMessage = document.getElementById("status-message");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            emailjs.sendForm("service_6kjxjnj", "template_cxkbly4", form)
+                .then(() => {
+                    statusMessage.textContent = "¡Mensaje enviado con éxito!";
+                    statusMessage.style.color = "green";
+                    form.reset();
+                }, (error) => {
+                    statusMessage.textContent = "Ocurrió un error. Intenta nuevamente.";
+                    statusMessage.style.color = "red";
+                });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>vera-alba@gmail.com</p>
+                <p>+54 9 3464 549463</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>"ESTAMOS HORNEANDO"</p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+    <script>
+        // Función para toggle el menú en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>

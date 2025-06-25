@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Alba - Panaderia de Masa Madre">
+    <title>Vera Alba</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Estilos CSS -->
+    <style>
+        /* Header */
+        header {
+            position: fixed;
+            /* Fijar en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 5px;
+            background-color: black;
+        }
+
+
+        /* Estilos para la página "Nosotros" */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0f0e0e;
+            background-color: #e9e4e4;
+        }
+
+        /* Contenedor general */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1500px;
+            margin: 100px auto;
+        }
+
+        /* Bloques de contenido */
+        .block {
+            display: flex;
+            align-items: center;
+            gap: 90px;
+        }
+
+        /* Imagen */
+        .block img {
+            max-width: 600px;
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Texto */
+        .block .content {
+            max-width: 500px;
+        }
+
+        .block .content h2 {
+            font-size: 45px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .block .content p {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Invertir dirección del bloque */
+        .block.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-between;
+            /* Centra las imágenes sin espacio entre ellas */
+            width: 70%;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+
+        .image {
+            width: 30%;
+            transition: transform 0.3s ease;
+        }
+
+        .image:hover {
+            transform: scale(1.1);
+        }
+
+        .title-container {
+            text-align: center;
+            /* Centra el texto */
+            margin-bottom: 20px;
+            /* Espacio entre el título y las imágenes */
+        }
+
+        .title {
+            font-size: 24px;
+            /* Tamaño de fuente del título */
+            font-weight: bold;
+            /* Puedes ajustar el grosor de la fuente */
+        }
+
+        @media (max-width: 768px) {
+
+            /* Contenedor general */
+            .container {
+                max-width: 100%;
+                /* Asegura que el contenedor ocupe todo el ancho disponible */
+                gap: 20px;
+                /* Reducir el espacio entre los bloques */
+            }
+
+            /* Bloques de contenido */
+            .block {
+                flex-direction: column;
+                /* Los bloques se apilan verticalmente */
+                align-items: center;
+                /* Centrar los elementos */
+                gap: 20px;
+                /* Reducir el espacio entre la imagen y el texto */
+            }
+
+            /* Imagen */
+            .block img {
+                width: 80%;
+                /* Las imágenes ocupan todo el ancho disponible */
+                height: auto;
+                /* Mantener la proporción */
+                max-width: 100%;
+                /* Asegura que la imagen no sea más ancha que el contenedor */
+            }
+
+            /* Texto */
+            .block .content h2 {
+                font-size: 30px;
+                /* Ajustar el tamaño de fuente para pantallas pequeñas */
+                text-align: center;
+            }
+
+            /* Estilo del texto */
+            .block .content p {
+                font-size: 19px;
+                /* Ajustar el tamaño del texto para pantallas pequeñas */
+                text-align: center;
+                /* Centrar el texto */
+                margin-left: 10px;
+                /* Añadir un pequeño margen para que no esté pegado al borde */
+                margin-right: 10px;
+                /* Añadir un pequeño margen para que no esté pegado al borde */
+                word-wrap: break-word;
+                /* Permitir que las palabras largas se dividan */
+                overflow-wrap: break-word;
+                /* Asegura que las palabras largas se ajusten al contenedor */
+                hyphens: auto;
+                /* Dividir palabras largas si es necesario */
+            }
+
+            /* Invertir dirección del bloque */
+            .block.reverse {
+                flex-direction: column;
+                /* Apilar las imágenes y el texto en pantallas pequeñas */
+            }
+
+            /* Contenedor de imágenes */
+            .image-container {
+                width: 100%;
+                /* Asegura que las imágenes ocupen todo el ancho en pantallas pequeñas */
+                margin: 0 auto;
+                justify-content: center;
+                /* Centrar las imágenes */
+            }
+
+            .image {
+                width: 45%;
+                /* Las imágenes ocuparán el 45% del ancho disponible */
+                margin: 10px;
+                /* Espacio entre las imágenes */
+            }
+
+            .title-container {
+                margin-bottom: 10px;
+                /* Reducir el espacio entre el título y las imágenes */
+            }
+
+            .title {
+                font-size: 20px;
+                /* Reducir el tamaño del título */
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Contenedor del título */
+            .title-container {
+                text-align: center;
+                margin-bottom: 20px;
+                /* Espacio entre el título y las imágenes */
+            }
+
+            /* Estilo del título */
+            .title {
+                font-size: 18px;
+                /* Tamaño de fuente más pequeño */
+                font-weight: bold;
+            }
+
+            /* Contenedor de imágenes */
+            .image-container {
+                display: flex;
+                flex-direction: column;
+                /* Apilar las imágenes verticalmente */
+                align-items: center;
+                /* Centrar las imágenes */
+                gap: 10px;
+                /* Espacio entre las imágenes */
+                margin-bottom: 50px;
+            }
+
+            /* Estilo de las imágenes */
+            .image {
+                width: 80%;
+                /* Las imágenes ocupan el 80% del ancho disponible */
+                max-width: 300px;
+                /* Limitar el tamaño máximo de las imágenes */
+                transition: transform 0.3s ease;
+            }
+
+            /* Efecto hover en imágenes */
+            .image:hover {
+                transform: scale(1.1);
+                /* Aumentar ligeramente el tamaño al pasar el mouse */
+            }
+        }
+
+        /* Menú */
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Icono de hamburguesa */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilos para móvil */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+                width: 100%;
+                background-color: #1b1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: auto;
+                justify-content: flex-start;
+                flex-direction: column;
+                padding-top: 50px;
+            }
+
+            .menu li {
+                text-align: center;
+                width: 100%;
+
+            }
+
+            .menu a {
+                padding: 20px;
+                color: white !important;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="img/logo_VA.png" alt="Logo Vera Alba">
+            </div>
+            <!-- Icono de menú hamburguesa para móviles -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="productos.html">Productos <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Panes</a></li>
+                        <li><a href="#">Panificados</a></li>
+                        <li><a href="#">Prepizzas</a></li>
+                        <li><a href="#">Focacceria</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="enterate.html">Enterate <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Venta por mayor</a></li>
+                        <li><a href="#">Congelados</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="contacto-btn">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Bloque 1: Imagen a la izquierda, texto a la derecha -->
+        <div class="block">
+            <img src="img/bar.png" alt="Ejemplo de imagen">
+            <div class="content">
+                <h2>¿Tenés un bar en Rosario?</h2>
+                <p>¿Sabías que hacemos envios a Rosario?. Consultanos por precios especiales y todos nuestros productos de Masa Madre.</p>
+            </div>
+        </div>
+
+        <!-- Bloque 2: Texto a la izquierda, imagen a la derecha -->
+        <div class="block reverse">
+            <img src="img/PRODUCTOS CONGELADOS.png" alt="Ejemplo de imagen">
+            <div class="content">
+                <h2>Productos Congelados</h2>
+                <p>Contamos con productos pre-coocinados, para que en tu local puedas terminarlo de cocinar solo en 5 minutos, y tu cliente note una fuerte diferencia de sabor y
+                    calidad.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="title-container">
+        <h2 class="title">PRODUCTOS PRE-COCIDOS</h2>
+    </div>
+    <div class="image-container">
+        <img src="img/molde_semi_integral.png" alt="Imagen 1" class="image">
+        <img src="img/molde_semi_integral.png" alt="Imagen 2" class="image">
+        <img src="img/molde_semi_integral.png" alt="Imagen 3" class="image">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>vera-alba@gmail.com</p>
+                <p>+54 9 3464 549463</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> "ESTAMOS HORNEANDO"</p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+    <script>
+        // Función para toggle el menú en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

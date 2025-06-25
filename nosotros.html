@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Alba - Panaderia de Masa Madre">
+    <title>Vera Alba</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Estilos CSS -->
+    <style>
+        /* Header */
+        header {
+            position: fixed;
+            /* Fijar en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 5px;
+            background-color: black;
+        }
+
+
+        /* Estilos para la página "Nosotros" */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0f0e0e;
+            background-color: #e9e4e4;
+        }
+
+        /* Contenedor general */
+        .container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1500px;
+            margin: 100px auto;
+        }
+
+        /* Bloques de contenido */
+        .block {
+            display: flex;
+            align-items: center;
+            gap: 90px;
+        }
+
+        /* Imagen */
+        .block img {
+            max-width: 600px;
+            height: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Texto */
+        .block .content {
+            max-width: 500px;
+        }
+
+        .block .content h2 {
+            font-size: 45px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .block .content p {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Invertir dirección del bloque */
+        .block.reverse {
+            flex-direction: row-reverse;
+        }
+
+        /* Estilos responsivos para dispositivos móviles */
+        @media (max-width: 768px) {
+            .container {
+                gap: 20px;
+                margin: 50px auto;
+                margin-top: 100px;
+            }
+
+            .block {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+                text-align: center;
+            }
+
+            .block img {
+                max-width: 80%;
+                height: auto;
+            }
+
+            .block .content {
+                max-width: 100%;
+            }
+
+            .block.reverse {
+                flex-direction: column;
+                /* Asegura que el texto siempre esté arriba */
+            }
+
+            .block .content h2 {
+                font-size: 32px;
+            }
+
+            .block .content p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 20px auto;
+                margin-top: 100px;
+            }
+
+            .block .content h2 {
+                font-size: 28px;
+            }
+
+            .block .content p {
+                font-size: 16px;
+            }
+        }
+
+        /* Agregar estilos específicos aquí */
+        /* Menú */
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Icono de hamburguesa */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilos para móvil */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+                width: 100%;
+                background-color: #1b1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: auto;
+                justify-content: flex-start;
+                flex-direction: column;
+                padding-top: 50px;
+            }
+
+            .menu li {
+                text-align: center;
+                width: 100%;
+
+            }
+
+            .menu a {
+                padding: 20px;
+                color: white !important;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="img/logo_VA.png" alt="Logo Vera Alba">
+            </div>
+            <!-- Icono de menú hamburguesa para móviles -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="productos.html">Productos <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Panes</a></li>
+                        <li><a href="#">Panificados</a></li>
+                        <li><a href="#">Prepizzas</a></li>
+                        <li><a href="#">Focacceria</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="enterate.html">Enterate <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Venta por mayor</a></li>
+                        <li><a href="#">Congelados</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="contacto-btn">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Bloque 1: Imagen a la izquierda, texto a la derecha -->
+        <div class="block">
+           
+            <div class="content">
+                <h2>¿Quienés Somos?</h2>
+                <p>Vera Alba nace de la unión de dos pasiones: la de nuestro pizzaiolo Fede, apasionado de la pizza napolitana con su emprendimiento Vera Pizza, y la mía, apasionada por la masa madre y la panadería artesanal, con mi emprendimiento Alba Madre. Juntos, decidimos unir nuestras pasiones para crear Vera Alba, donde la fermentación larga es el corazón de nuestra panadería. Este proceso no solo potencia el sabor, sino que también mejora la digestibilidad y los beneficios nutricionales del pan. En Vera Alba, 
+                    nos enfocamos en crear panes y pizzas artesanales con masa madre, sin conservantes ni aditivos, para que disfrutes de un producto auténtico y saludable.</p>
+            </div>
+             <img src="img/nosotros.png" alt="Ejemplo de imagen">
+        </div>
+
+        <!-- Bloque 2: Texto a la izquierda, imagen a la derecha 
+        <div class="block reverse">
+            <img src="img/molde_semi_integral.png" alt="Ejemplo de imagen">
+            <div class="content">
+                <h2>¿Qué Somos?</h2>
+                <p>Somos un emprendimiento de panaderia artesanal de masa madre, con dedicacion, pasion y amor
+                    realizamos nuestros productos, respetando los tiempos, las formas
+                    para obtener el mejor producto.
+                </p>
+            </div>
+        </div>-->
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>vera-alba@gmail.com</p>
+                <p>+54 9 3464 549463</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> "ESTAMOS HORNEANDO"</p>
+        </div>
+    </footer>
+    <script src="js/app.js"></script>
+    <script>
+        // Función para toggle el menú en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

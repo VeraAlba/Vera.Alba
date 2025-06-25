@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Vera Alba - Panaderia de Masa Madre">
+    <title>Vera Alba</title>
+    <link rel="stylesheet" href="css/styles.css"> <!-- Estilos CSS -->
+    <style>
+        /* Header */
+        header {
+            position: fixed;
+            /* Fijar en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 10px 5px;
+            background-color: black;
+        }
+
+
+        /* Estilos para la página "Nosotros" */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #0f0e0e;
+            background-color: #e9e4e4;
+        }
+
+        /* Contenedor general */
+        #gallery-sections {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            margin-top: 100px;
+        }
+
+        /* Títulos de las secciones */
+        .gallery-section h2 {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            color: #222;
+        }
+
+        /* Contenedor de la galería */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            /* 4 imágenes por fila */
+            width: 100%;
+            /* Ocupa todo el ancho de la pantalla */
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            /* Hace que las imágenes sean cuadradas */
+            object-fit: cover;
+            /* Se ajusta al contenedor sin distorsión */
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Efecto hover */
+        .gallery img:hover {
+            transform: scale(1.1);
+            /* Zoom al pasar el mouse */
+            opacity: 0.8;
+        }
+
+        /* Espaciado entre secciones */
+        .gallery-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* Modal (oculto por defecto) */
+        .modal {
+            display: none;
+            /* Oculto inicialmente */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Fondo negro semitransparente */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Imagen del modal */
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Botón de cierre */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff5555;
+        }
+
+        /* Fondo detrás del modal */
+        .modal.active {
+            display: flex;
+            /* Muestra el modal como un flexbox */
+        }
+
+        .icon-container {
+            background-color: rgba(248, 232, 232, 0.74);
+            /* Fondo negro con transparencia */
+            width: 100%;
+            /* Ocupa todo el ancho de la pantalla */
+            display: flex;
+            /* Centra el ícono */
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            /* Espaciado vertical alrededor del ícono */
+            margin-bottom: 30px;
+        }
+
+        /* Estilo para hacer que las imágenes se acomoden en móviles */
+        @media (max-width: 768px) {
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 imágenes por fila */
+                gap: 10px;
+            }
+
+            .gallery img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 imágenes por fila en pantallas más pequeñas */
+            }
+
+            .gallery img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        /* Menú */
+        .menu {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            margin: 0;
+        }
+
+        .menu li {
+            position: relative;
+        }
+
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+
+        /* Icono de hamburguesa */
+        .menu-icon {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            margin-right: 20px;
+            z-index: 1000;
+        }
+
+        /* Estilos para móvil */
+        @media screen and (max-width: 768px) {
+            .menu {
+                display: none;
+                width: 100%;
+                background-color: #1b1a1a;
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: auto;
+                justify-content: flex-start;
+                flex-direction: column;
+                padding-top: 50px;
+            }
+
+            .menu li {
+                text-align: center;
+                width: 100%;
+
+            }
+
+            .menu a {
+                padding: 20px;
+                color: white !important;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="img/logo_VA.png" alt="Logo Vera Alba">
+            </div>
+            <!-- Icono de menú hamburguesa para móviles -->
+            <div class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+            <ul class="menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li class="dropdown">
+                    <a href="productos.html">Productos <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Panes</a></li>
+                        <li><a href="#">Panificados</a></li>
+                        <li><a href="#">Prepizzas</a></li>
+                        <li><a href="#">Focacceria</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="enterate.html">Enterate <span class="arrow">↓</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Venta por mayor</a></li>
+                        <li><a href="#">Congelados</a></li>
+                    </ul>
+                </li>
+                <li><a href="contacto.html" class="contacto-btn">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div id="gallery-sections">
+
+        <!-- Panes de Masa Madre -->
+        <section class="gallery-section" id="panes">
+            <img class="section-icon" src="img/icons/1.png" alt="name">
+            <div class="gallery">
+                <img src="img/molde_semi_integral.png" alt="Pan 1" onclick="openModal(this)">
+                <img src="img/productos/hogazas.png" alt="Pan 2" onclick="openModal(this)">
+                <img src="img/productos/pan de molde inteagral.png" alt="Pan 3" onclick="openModal(this)">
+                <img src="img/productos/pan_de_molde_centeno.png" alt="Pan 4" onclick="openModal(this)">
+            </div>
+        </section>
+
+        <!-- Panificación -->
+        <section class="gallery-section" id="panificados">
+            <img class="section-icon" src="img/icons/3.png" alt="name">
+            <div class="gallery">
+                <img src="img/productos/baguettes.png" alt="Panificación 1" onclick="openModal(this)">
+                <img src="img/productos/ciabatta.png" alt="Panificación 2" onclick="openModal(this)">
+                <img src="img/productos/focaccia.png"Panificación 3" onclick="openModal(this)">
+                <img src="img/productos/panes2.png" alt="Panificación 4" onclick="openModal(this)">
+            </div>
+        </section>
+
+        <!-- Prepizzas y Focaccias -->
+        <section class="gallery-section" id="prepizzas">
+            <img class="section-icon" src="img/icons/2.png" alt="name">
+            <div class="gallery">
+                <img src="img/productos/prepizza napolitana.png" alt="Prepizza 1" onclick="openModal(this)">
+                <img src="img/productos/romana.png" alt="Prepizza 2" onclick="openModal(this)">
+                <img src="img/productos/focaccia plancha.png" alt="Prepizza 3" onclick="openModal(this)">
+                <img src="img/productos/sandwich focaccia.png" alt="Prepizza 4" onclick="openModal(this)">
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="image-modal" class="modal">
+        <span class="close" onclick="closeModal()">✖</span>
+        <img class="modal-content" id="modal-image">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Información</h3>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Redes sociales</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>vera-alba@gmail.com</p>
+                <p>+54 9 3464 549463</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> "ESTAMOS HORNEANDO"</p>
+        </div>
+    </footer>
+    <script>
+        // Abre el modal con la imagen seleccionada
+        function openModal(image) {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            modalImage.src = image.src; // Asigna la misma imagen al modal
+            modal.classList.add('active'); // Muestra el modal
+        }
+
+        // Cierra el modal
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.remove('active'); // Oculta el modal
+        }
+
+    </script>
+    <script src="js/app.js"></script>
+    <script>
+        // Función para toggle el menú en dispositivos móviles
+        function toggleMenu() {
+            var menu = document.querySelector('.menu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+
+</html>
