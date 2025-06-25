@@ -1,0 +1,609 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+/* Resetear márgenes y rellenos */
+/* General Reset */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden; /* Esto evita el desbordamiento horizontal */
+}
+
+/* Header */
+header {
+    position: fixed;
+    /* Fijar en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 5px;
+    transition: background-color 0.3s ease;
+}
+
+
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+nav .logo {
+    flex: 0;
+    text-align: left;
+    z-index: 1000;
+}
+
+nav .logo img {
+    width: 50px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+nav ul li a:hover {
+    color: #ff9900;
+}
+
+nav ul li .contacto-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: none;
+    border: 2px solid #fff;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+nav ul li .contacto-btn:hover {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+}
+
+/* Estilos generales */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+    position: relative;
+}
+
+a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: #444;
+}
+
+/* Estilos para el dropdown */
+.dropdown {
+    position: relative;
+}
+
+.arrow {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Menú desplegable */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    width: 180px;
+    z-index: 1;
+    padding: 10px 0;
+    margin-top: 8px;
+}
+
+.dropdown-menu li {
+    width: 100%;
+}
+
+.dropdown-menu a {
+    padding: 5px;
+    text-align: left;
+}
+
+.dropdown-menu a:hover {
+    background-color: #555;
+}
+
+/* Mostrar el menú al hacer hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-image: url('../img/fondo_Web.svg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Añadido para que la imagen se quede fija */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.hero .hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 4rem;
+    /* Tamaño grande para destacar */
+    font-weight: 700;
+    color: white;
+    /* Color oscuro y elegante */
+    text-align: center;
+    /* Centrado */
+    text-transform: uppercase;
+    /* Convierte el texto a mayúsculas */
+    letter-spacing: 3px;
+    /* Espaciado entre letras */
+    margin: 20px 0;
+    /* Separación superior e inferior */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+
+/* Sección debajo de Hero */
+#conocenos {
+    padding: 60px 20px;
+    background-color: #eee4e4;
+    color: #333;
+    text-align: center;
+}
+
+.conocenos-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.conocenos-content img {
+    display: block;
+    margin: 0 auto;
+    /* Centra la imagen horizontalmente */
+    height: 300px;
+    /* Mantén las proporciones */
+}
+
+@media (max-width: 768px) {
+    .conocenos-content img {
+        display: block;
+        margin: 0 auto;
+        /* Centra la imagen horizontalmente */
+        width: 100%;
+        /* La imagen ocupa todo el ancho disponible */
+        height: auto;
+        /* Mantiene la proporción de la imagen */
+        max-height: 250px;
+        /* Limita la altura máxima en dispositivos pequeños */
+    }
+}
+
+
+.italic-title {
+    font-style: italic;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#conocenos p {
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+}
+
+#conocenos .btn {
+    margin-top: 20px;
+    /* Añade espacio hacia arriba */
+    padding: 10px 60px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+
+#conocenos .btn:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Estilos para el carrusel */
+#carousel {
+    position: relative;
+    width: 100%;
+    margin: 60px auto;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 1s ease-in-out;
+}
+
+.carousel-slide {
+    display: flex;
+}
+
+.carousel-slide img {
+    width: 50%;
+    height: 400px;
+    object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    flex-shrink: 0;
+}
+
+
+/* Estilo para los puntos de navegación */
+.carousel-dots {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.carousel-dots button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.carousel-dots button:hover {
+    transform: scale(1.2);
+}
+
+.carousel-dots .active {
+    color: #ff9900;
+}
+
+@media (max-width: 768px) {
+    #carousel {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        /* Asegura que las imágenes no se salgan del contenedor */
+    }
+
+    .carousel-container {
+        display: flex;
+        width: 200%;
+        /* Se duplica el ancho para mostrar dos "slides" */
+        transition: transform 0.5s ease-in-out;
+        /* Efecto de transición suave */
+    }
+
+    .carousel-slide {
+        width: 100%;
+        /* Cada slide ocupa el 100% del contenedor */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .carousel-slide img {
+        width: 100%;
+        height: auto;
+        /* Mantén la proporción de la imagen */
+        object-fit: cover;
+        /* Asegura que la imagen cubra todo el contenedor sin deformarse */
+    }
+
+    .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: center;
+    }
+
+    .dot {
+        background-color: rgba(255, 255, 255, 0.7);
+        border: none;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .dot:hover {
+        background-color: rgba(255, 255, 255, 1);
+    }
+
+    .dot.active {
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+
+/* Nueva Sección de Trabajo */
+#trabaja-con-nosotros {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* Puedes ajustar la altura según sea necesario */
+    background-image: url('../img/fondo_web_2.svg');
+    /* Cambia esta URL por la imagen que desees */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Fija la imagen al fondo */
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.trabaja-content {
+    position: absolute;
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+    max-width: 600px;
+    /* Ajusta el ancho máximo */
+    padding: 20px;
+    left: 90px;
+    /* Coloca el contenido a la izquierda */
+    top: 50%;
+    /* Centra verticalmente */
+    transform: translateY(-50%);
+    /* Ajuste para un centrado perfecto */
+    color: white;
+    /* Cambia el color del texto si es necesario */
+    font-size: 20px;
+    /* Ajusta el tamaño de la fuente si es necesario */
+}
+
+
+.trabaja-content h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.trabaja-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.trabaja-content .btn {
+    padding: 10px 50px;
+    background-color: #1a1918e7;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.trabaja-content .btn:hover {
+    background-color: #1a1918c2;
+}
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 200px;
+    padding: 20px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    background-color: #222;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+#productos {
+    padding: 40px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+.productos-container h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.productos-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.producto-item {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.producto-item:hover {
+    transform: translateY(-10px);
+    /* Eleva el elemento */
+    box-shadow: 0 8px 12px rgba(165, 19, 19, 0.2);
+    /* Aumenta la sombra */
+}
+
+.producto-item img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.producto-item:hover img {
+    transform: scale(1.1);
+    /* Zoom al pasar el mouse */
+    filter: brightness(1.2);
+    /* Aumenta el brillo */
+}
+
+.producto-item img {
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.producto-item h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.producto-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+
+
+
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    /* Distancia desde la parte inferior de la página */
+    right: 20px;
+    /* Distancia desde el lado derecho */
+    background-color: #25d366;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-btn img {
+    width: 50px;
+    height: 50px;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.1);
+    /* Efecto al pasar el mouse */
+}
+
+@media (max-width: 768px) {
+    .whatsapp-btn {
+        position: fixed;
+        bottom: 40px;  /* Mantenerlo a 40px desde el fondo */
+        right: 30px;   /* Mantenerlo a 60px desde la derecha */
+        background-color: #25d366;
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        z-index: 9999; /* Asegura que el botón esté encima de otros elementos */
+    }
+
+    .whatsapp-btn img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .whatsapp-btn:hover {
+        transform: scale(1.1); /* Efecto de aumento al pasar el mouse */
+    }
+}
